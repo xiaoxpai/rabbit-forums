@@ -1,0 +1,18 @@
+#上传pdf文件步骤
+
+#1.跟踪文件
+git lfs track "*.pdf"
+
+#2.添加配置，不可缺该文件
+git add .gitattributes
+
+#3.提交
+git add .
+
+#4.推送到分支
+git push origin book
+
+or
+
+git push
+
