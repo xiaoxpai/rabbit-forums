@@ -44,9 +44,7 @@
         // 传递的参数是一个可变参数，那么就可以传递一个数组，或者传递一个元素列表。 该方法的重载版本接受两个或更多参数。
         List<Long> ids = Stream.of(bigId, respMaterialBigSortDTO.getParentId())
                 .collect(Collectors.toList());
-        List<Long> ids = Stream.of(bigId, respMaterialBigSortDTO.getParentId())
-                .collect(Collectors.toList());
-
+                
         //生成树层级结构
         List<RespMaterialBigSortDTO> list = materialBigSortMapper.queryBigSortsByIds(ids);
 
