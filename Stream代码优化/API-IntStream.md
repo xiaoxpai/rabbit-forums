@@ -6,7 +6,7 @@
         // 查询对应分类信息
         RespMaterialBigSortDTO respMaterialBigSortDTO = materialBigSortMapper.queryById(bigId);
 
-      List<Long> ids = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
         ids.add(bigId);
         ids.add(respMaterialBigSortDTO.getParentId());
 
@@ -40,6 +40,10 @@
         RespMaterialBigSortDTO respMaterialBigSortDTO = materialBigSortMapper.queryById(bigId);
 
         //使用了Stream.of()方法将bigId和parentId转换为List  ★★★★★
+        //Stream.of() 方法返回一个流，其元素是指定值，如果没有指定值，则返回一个空流。 
+        // 传递的参数是一个可变参数，那么就可以传递一个数组，或者传递一个元素列表。 该方法的重载版本接受两个或更多参数。
+        List<Long> ids = Stream.of(bigId, respMaterialBigSortDTO.getParentId())
+                .collect(Collectors.toList());
         List<Long> ids = Stream.of(bigId, respMaterialBigSortDTO.getParentId())
                 .collect(Collectors.toList());
 
