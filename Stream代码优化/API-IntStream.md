@@ -73,3 +73,24 @@
                 });
     }
 ```
+
+# 002_Stream.map()
+
+>使用 Stream API 可以将循环转化为函数式风格的代码，使代码更加简洁易懂。同时，使用 map() 方法可以将 req.getDbIds() 中的每个元素映射为一个新的 ApplyDBInfo 对象，最后使用 collect() 方法将映射结果收集到一个新的 List 中。
+
+优化之前的代码片段
+```java
+     List<ApplyDBInfo> dbs = new ArrayList<>();
+        for (Long id : req.getDbIds()) {
+            ApplyDBInfo tollDB = new ApplyDBInfo(mainForm.getId(), id);
+            dbs.add(tollDB);
+        }
+```
+
+
+优化之后的代码
+```java
+        List<ApplyDBInfo> dbs = req.getDbIds().stream()
+                .map(id -> new ApplyDBInfo(mainForm.getId(), id))
+                .collect(Collectors.toList());
+```
