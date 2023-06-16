@@ -94,3 +94,20 @@
                 .map(id -> new ApplyDBInfo(mainForm.getId(), id))
                 .collect(Collectors.toList());
 ```
+
+
+
+## 003_Stream.collect(Collectors.toMap(key,Obj));
+
+```java  
+        List<RespMaterialBigSortTreeDTO> bigTree = materialBigSortMapper.queryTree();
+
+        // 将List转为Map
+        //解释下面这段代码： Collectors.toMap()方法接收两个参数，第一个参数是要作为key的字段，第二个参数是整个对象。
+        // 这里的key是id，value是整个对象，这样就可以通过id来获取整个对象了。
+        // 这里的Function.identity()是一个静态方法，返回一个Function对象，这个对象的apply方法返回一个与传入参数相同的值。
+        Map<Long, RespMaterialBigSortTreeDTO> map = bigTree.stream().collect(Collectors.toMap(
+                RespMaterialBigSortTreeDTO::getId,
+                Function.identity()));
+
+```
