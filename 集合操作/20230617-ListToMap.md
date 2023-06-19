@@ -52,15 +52,15 @@ private List<RespMaterialPartTreeDTO> buildPartTree(List<RespMaterialPartTreeDTO
                 RespMaterialPartTreeDTO parentObj = map.get(currentObj.getParentId());
                 //如果存在父节点
                 if (ObjectUtil.isNotNull(parentObj)) {
-                    //获取子节点
+                    //首次节点为空，初始化
                     List<RespMaterialPartTreeDTO> children = parentObj.getChildren();
 
-                    //如果子节点为空，就说明已经没有子节点了，就创建一个新的集合返回
+                    // 首次节点为空，初始化
                     if (CollectionUtil.isEmpty(children)) {
                         children = new LinkedList<>();
                         parentObj.setChildren(children);
                     }
-                    //将当前节点添加到父节点的子节点中
+                    //将子节点添加到父节点中
                     children.add(currentObj);
                 } else {
                     //如果不存在父节点，就说明是根节点，就将当前节点添加到树中
