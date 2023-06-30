@@ -111,3 +111,21 @@
                 Function.identity()));
 
 ```
+
+## 004_Stream 使用Collectors.groupingBy 去重
+
+```java
+List<ReqMaterialExcelDTO> data = Arrays.asList(/* 填入您提供的实例数据 */);
+
+// 定义用于比较相等的属性
+Function<ReqMaterialExcelDTO, List<String>> groupByList = dto -> Arrays.asList(dto.getSecondLevel(), dto.getSecondLevelCode());
+
+// 分组去重
+Map<List<String>, ReqMaterialExcelDTO> resultMap = data.stream()
+        .distinct()
+        .collect(Collectors.toMap(groupByList, dto -> dto, (v1, v2) -> v1));
+
+// 获取去重后的结果
+List<ReqMaterialExcelDTO> resultList = new ArrayList<>(resultMap.values());
+
+```
