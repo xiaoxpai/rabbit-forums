@@ -1,6 +1,25 @@
 
+
+
+
+1.https://www.selenium.dev/zh-cn/documentation/selenium_manager/
+2.search: Automated browser management
+3.
+![alt text](image.png)
+
+
+
+---
+
+
+
+
 - issue:
   -  https://stackoverflow.com/questions/76932496/webdrivermanager-setup-failing-to-download-chromedriver-116
+
+
+
+
 
 
 - chromedriver
